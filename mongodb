@@ -1,0 +1,798 @@
+MONGODB:
+
+AM i audible?
+Jusr a second 
+Will rejoin 
+
+
+BSON=>
+
+What is MongoDB?
+Difference the sql and NoSql
+
+Non Structure Query Language
+
+
+SQL=>Tabular format
+row ,columns records
+
+Google,facebook,amazon,Banking
+
+schema-databasre Archite.
+
+Its very easy manage crud operation with the help 
+Mongodb database
+you can print data by using some inbuilt as per your requirement
+
+
+Unstructured Data
+
+JSON:
+
+MongoDb:
+Its a NOSQL document Database that store the data as documents.
+It used a structure way to store and access the data as document
+
+
+
+Document:
+A document is way to organize and store the data as field 
+key:value pair
+Collection:
+
+
+How to store Data in MongoDB?
+JSON:
+Mongodb store data in BSON
+(Binary JSON)=>Light weight and good when json like 
+
+JSON
+
+{
+"field":value,
+"field":value2,
+
+MongoDB:
+MongoDB Server
+
+mongod
+mongo shell:
+command line
+
+database=Database
+tables=collections
+rows=>documents(BSON)
+column=>field
+
+
+use employeedb
+show 
+
+Insert:
+
+1.insertOne()=>to insert a single document in a database
+2.insertMany()=>to insert more than 1 document.
+3.insert=>you can insert as many data that you want
+
+
+db.collectionname.find(
+{
+age:{$ne:24}
+})
+
+
+Update Documents:
+
+
+drop=>it used to remove all the document inside a collection
+
+removing
+
+it is used to delete all the documents with collection.
+
+
+
+
+Microsoft Windows [Version 10.0.19044.1586]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("525b98ca-748f-4d52-a2f0-a561355743ed") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-03-15T04:43:23.917+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> db
+test
+> show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use EmployeeDB
+switched to db EmployeeDB
+> show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db.employee.insert(
+... {
+... "employeeid":101,
+... "employeename":"Syed"
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+> show databases
+EmployeeDB  0.000GB
+admin       0.000GB
+config      0.000GB
+local       0.000GB
+> use guvi
+switched to db guvi
+> use EmployeeDB
+switched to db EmployeeDB
+> use guvi
+switched to db guvi
+> use EmployeeDB
+switched to db EmployeeDB
+> show databases
+EmployeeDB  0.000GB
+admin       0.000GB
+config      0.000GB
+local       0.000GB
+> db.dropDatabase()
+{ "ok" : 1 }
+> show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use guvi
+switched to db guvi
+> db.testCollection.insert({"name":"Sindhu","age":25,"email":"sindhu@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+> db.testCollection.insertOne(
+... {
+... "name":"syed",
+... "age":24,
+... "email":"syed@gmail.com"
+... }
+... )
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6232c6812b4edd25970285a3")
+}
+> db.testCollection.insertOne([
+... {
+... "^C
+
+> db.testCollection.insertMany([
+... {
+... "name":"jagdeesh",
+... "age":24,
+... "email":"jag@gmail.com"
+... },
+... {
+... "name":"Abhay",
+... "Age":25,
+... "email":"abhay@gmail.com"
+... },
+... {
+... "name":"Vaibhav",
+... "Age":24,
+... "email":"v@gmail.com"
+... }
+... ]
+... )
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6232c81a2b4edd25970285a4"),
+                ObjectId("6232c81a2b4edd25970285a5"),
+                ObjectId("6232c81a2b4edd25970285a6")
+        ]
+}
+> db.testCollection.insert({"name":"Sai","age":38,"city":"chennai"})
+WriteResult({ "nInserted" : 1 })
+> db.testCollection.find()
+{ "_id" : ObjectId("6232c53b2b4edd25970285a2"), "name" : "Sindhu", "age" : 25, "email" : "sindhu@gmail.com" }
+{ "_id" : ObjectId("6232c6812b4edd25970285a3"), "name" : "syed", "age" : 24, "email" : "syed@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a4"), "name" : "jagdeesh", "age" : 24, "email" : "jag@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a5"), "name" : "Abhay", "Age" : 25, "email" : "abhay@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a6"), "name" : "Vaibhav", "Age" : 24, "email" : "v@gmail.com" }
+{ "_id" : ObjectId("6232c8d52b4edd25970285a7"), "name" : "Sai", "age" : 38, "city" : "chennai" }
+> db.testCollection.find().pretty()
+{
+        "_id" : ObjectId("6232c53b2b4edd25970285a2"),
+        "name" : "Sindhu",
+        "age" : 25,
+        "email" : "sindhu@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c6812b4edd25970285a3"),
+        "name" : "syed",
+        "age" : 24,
+        "email" : "syed@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a4"),
+        "name" : "jagdeesh",
+        "age" : 24,
+        "email" : "jag@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a5"),
+        "name" : "Abhay",
+        "Age" : 25,
+        "email" : "abhay@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a6"),
+        "name" : "Vaibhav",
+        "Age" : 24,
+        "email" : "v@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c8d52b4edd25970285a7"),
+        "name" : "Sai",
+        "age" : 38,
+        "city" : "chennai"
+}
+> show databases
+admin   0.000GB
+config  0.000GB
+guvi    0.000GB
+local   0.000GB
+> db.testCollection.find(
+... {
+... name:"Sindhu"
+... }
+... )
+{ "_id" : ObjectId("6232c53b2b4edd25970285a2"), "name" : "Sindhu", "age" : 25, "email" : "sindhu@gmail.com" }
+> db.testCollection.find(
+... {
+... age:{$lt:25}
+... })
+{ "_id" : ObjectId("6232c6812b4edd25970285a3"), "name" : "syed", "age" : 24, "email" : "syed@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a4"), "name" : "jagdeesh", "age" : 24, "email" : "jag@gmail.com" }
+> db.testCollection.find( { age:{$gt:25} })
+{ "_id" : ObjectId("6232c8d52b4edd25970285a7"), "name" : "Sai", "age" : 38, "city" : "chennai" }
+> db.testCollection.find( { age:{$ne:30} })
+{ "_id" : ObjectId("6232c53b2b4edd25970285a2"), "name" : "Sindhu", "age" : 25, "email" : "sindhu@gmail.com" }
+{ "_id" : ObjectId("6232c6812b4edd25970285a3"), "name" : "syed", "age" : 24, "email" : "syed@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a4"), "name" : "jagdeesh", "age" : 24, "email" : "jag@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a5"), "name" : "Abhay", "Age" : 25, "email" : "abhay@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a6"), "name" : "Vaibhav", "Age" : 24, "email" : "v@gmail.com" }
+{ "_id" : ObjectId("6232c8d52b4edd25970285a7"), "name" : "Sai", "age" : 38, "city" : "chennai" }
+> db.testCollection.update({age:24},{$set:{age:26})
+... }
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:48
+> db.testCollection.update({age:24},{$set:{age:26}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.testCollection.find().pretty()
+{
+        "_id" : ObjectId("6232c53b2b4edd25970285a2"),
+        "name" : "Sindhu",
+        "age" : 25,
+        "email" : "sindhu@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c6812b4edd25970285a3"),
+        "name" : "syed",
+        "age" : 26,
+        "email" : "syed@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a4"),
+        "name" : "jagdeesh",
+        "age" : 24,
+        "email" : "jag@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a5"),
+        "name" : "Abhay",
+        "Age" : 25,
+        "email" : "abhay@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a6"),
+        "name" : "Vaibhav",
+        "Age" : 24,
+        "email" : "v@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c8d52b4edd25970285a7"),
+        "name" : "Sai",
+        "age" : 38,
+        "city" : "chennai"
+}
+> db.testCollection.update({name:"Sai"},{$unset:{age:""}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.testCollection.find()
+{ "_id" : ObjectId("6232c53b2b4edd25970285a2"), "name" : "Sindhu", "age" : 25, "email" : "sindhu@gmail.com" }
+{ "_id" : ObjectId("6232c6812b4edd25970285a3"), "name" : "syed", "age" : 26, "email" : "syed@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a4"), "name" : "jagdeesh", "age" : 24, "email" : "jag@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a5"), "name" : "Abhay", "Age" : 25, "email" : "abhay@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a6"), "name" : "Vaibhav", "Age" : 24, "email" : "v@gmail.com" }
+{ "_id" : ObjectId("6232c8d52b4edd25970285a7"), "name" : "Sai", "city" : "chennai" }
+> db.testCollection.remove({name"
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:31
+> db.testCollection.remove({name:"Sai"}})
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:37
+> db.testCollection.remove({name:"Sai"})
+WriteResult({ "nRemoved" : 1 })
+> db.testCollection.find()
+{ "_id" : ObjectId("6232c53b2b4edd25970285a2"), "name" : "Sindhu", "age" : 25, "email" : "sindhu@gmail.com" }
+{ "_id" : ObjectId("6232c6812b4edd25970285a3"), "name" : "syed", "age" : 26, "email" : "syed@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a4"), "name" : "jagdeesh", "age" : 24, "email" : "jag@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a5"), "name" : "Abhay", "Age" : 25, "email" : "abhay@gmail.com" }
+{ "_id" : ObjectId("6232c81a2b4edd25970285a6"), "name" : "Vaibhav", "Age" : 24, "email" : "v@gmail.com" }
+> db.testCollection.find().preety()
+uncaught exception: TypeError: db.testCollection.find(...).preety is not a function :
+@(shell):1:1
+> db.testCollection.find().preety()
+uncaught exception: TypeError: db.testCollection.find(...).preety is not a function :
+@(shell):1:1
+> db.testCollection.find().pretty()
+{
+        "_id" : ObjectId("6232c53b2b4edd25970285a2"),
+        "name" : "Sindhu",
+        "age" : 25,
+        "email" : "sindhu@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c6812b4edd25970285a3"),
+        "name" : "syed",
+        "age" : 26,
+        "email" : "syed@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a4"),
+        "name" : "jagdeesh",
+        "age" : 24,
+        "email" : "jag@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a5"),
+        "name" : "Abhay",
+        "Age" : 25,
+        "email" : "abhay@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a6"),
+        "name" : "Vaibhav",
+        "Age" : 24,
+        "email" : "v@gmail.com"
+}
+> db.testCollection.update({Age:24},{$set:{Age:36}) }
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:48
+> db.testCollection.update({Age:24},{$set:{Age:36}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.testCollection.find().pretty()
+{
+        "_id" : ObjectId("6232c53b2b4edd25970285a2"),
+        "name" : "Sindhu",
+        "age" : 25,
+        "email" : "sindhu@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c6812b4edd25970285a3"),
+        "name" : "syed",
+        "age" : 26,
+        "email" : "syed@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a4"),
+        "name" : "jagdeesh",
+        "age" : 24,
+        "email" : "jag@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a5"),
+        "name" : "Abhay",
+        "Age" : 25,
+        "email" : "abhay@gmail.com"
+}
+{
+        "_id" : ObjectId("6232c81a2b4edd25970285a6"),
+        "name" : "Vaibhav",
+        "Age" : 36,
+        "email" : "v@gmail.com"
+}
+> MONGODB:
+...
+...
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):3:3
+> Will rejoin
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:5
+>
+>
+> BSON=>
+...
+... What is MongoDB?
+... Difference the sql and NoSql
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):3:5
+>
+> Non Structure Query Language
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:4
+>
+>
+> SQL=>Tabular format
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:13
+> row ,columns records
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:13
+>
+> Google,facebook,amazon,Banking
+uncaught exception: ReferenceError: Google is not defined :
+@(shell):1:1
+>
+> schema-databasre Archite.
+...
+... Its very easy manage crud operation with the help
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:17
+> Mongodb database
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:8
+> you can print data by using some inbuilt as per your requirement
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:4
+>
+>
+> Unstructured Data
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:13
+>
+> JSON:
+...
+... MongoDb:
+... Its a NOSQL document Database that store the data as documents.
+... It used a structure way to store and access the data as document
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):4:4
+>
+>
+>
+> Document:
+... A document is way to organize and store the data as field
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):2:2
+> key:value pair
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:10
+> Collection:
+...
+...
+> How to store Data in MongoDB?
+... JSON:
+... Mongodb store data in BSON
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:4
+> (Binary JSON)=>Light weight and good when json like
+uncaught exception: SyntaxError: missing ) in parenthetical :
+@(shell):1:8
+>
+> JSON
+{ }
+>
+> {
+... "field":value,
+... "field":value2,
+...
+... MongoDB:
+... MongoDB Server
+...
+... mongod
+... mongo shell:
+... command line
+...
+... database=Database
+... tables=collections
+... rows=>documents(BSON)
+... column=>field
+...
+...
+> use employeedb
+switched to db employeedb
+> show
+uncaught exception: Error: don't know how to show [] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+>
+> Insert:
+...
+... 1.insertOne()=>to insert a single document in a database
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):3:0
+> 2.insertMany()=>to insert more than 1 document.
+... 3.insert=>you can insert as many data that you want
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):1:0
+>
+>
+> db.collectionname.find(
+... {
+... age:{$ne:24}
+... })
+>
+>
+> Update Documents:
+...
+...
+> drop=>it used to remove all the document inside a collection
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+>
+> removing
+uncaught exception: ReferenceError: removing is not defined :
+@(shell):1:1
+>
+> it is used to delete all the documents with collection.
+...
+...
+error2:invalid string position
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> }
+uncaught exception: SyntaxError: expected expression, got '}' :
+@(shell):1:0
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> What is Document?
+... How to store Data in mondoDB?
+... Basic Command to operate with mongodb DB
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:5
+>
+>
+>
+> ^C
+bye
+
+C:\Program Files\MongoDB\Server\5.0\bin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is Document?
+How to store Data in mondoDB?
+Basic Command to operate with mongodb DB
+
+
+
